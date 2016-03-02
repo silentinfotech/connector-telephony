@@ -256,7 +256,7 @@ class asterisk_server(orm.Model):
                 # 6 = Up
                 if (
                         chan.get('ChannelState') == '6' and
-                        sip_account in chan.get('BridgedChannel', '')):
+                        chan.get('ConnectedLineNum') == user.internal_number):
                     _logger.debug("Found a matching Event in 'Up' state")
                     calling_party_number = chan.get('CallerIDNum')
                     break
